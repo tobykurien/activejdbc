@@ -2,12 +2,12 @@ package org.javalite.activejdbc;
 
 import org.javalite.test.jspec.ExceptionExpectation;
 import org.javalite.test.jspec.JSpecSupport;
-import org.junit.After;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * @author Igor Polevoy
  */
+@Ignore("MySql")
 public class Defect150ConnectionLeakTest extends JSpecSupport {
 
     @After

@@ -17,6 +17,8 @@ limitations under the License.
 
 package org.javalite.activejdbc;
 
+import java.util.List;
+
 import org.javalite.activejdbc.test.ActiveJDBCTest;
 import org.javalite.activejdbc.test_models.Person;
 import org.junit.Test;
@@ -36,7 +38,8 @@ public class ModelExistsTest extends ActiveJDBCTest {
     @Test
     public void testInstance(){
         deleteAndPopulateTable("people");
-        Person p = Person.<Person>findAll().get(0);
+        List<Person> people = Person.findAll(); 
+        Person p = people.get(0);
         Person.delete("id = ?", p.getId());
         a(p.exists()).shouldBeFalse();
     }

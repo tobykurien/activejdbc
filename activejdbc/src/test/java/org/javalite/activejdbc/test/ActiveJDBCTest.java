@@ -17,26 +17,66 @@ limitations under the License.
 
 package org.javalite.activejdbc.test;
 
-import java.io.*;
-import java.sql.*;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
-
+import static org.javalite.activejdbc.test.JdbcProperties.*;
 import static org.javalite.common.Collections.list;
 
+import java.io.*;
+import java.sql.*;
+import java.util.*;
+
 import org.javalite.activejdbc.*;
-import org.javalite.activejdbc.test_models.Person;
+import org.javalite.activejdbc.test_models.*;
+import org.javalite.activejdbc.test_models.Reader;
 import org.javalite.test.jspec.JSpecSupport;
-
-import org.junit.After;
-import org.junit.Before;
-
-import static org.javalite.activejdbc.test.JdbcProperties.*;
+import org.junit.*;
 
 
 public abstract class ActiveJDBCTest extends JSpecSupport {
-
+  protected ModelContext<User> User= Model.with(User.class);
+  protected ModelContext<Person> Person= Model.with(Person.class);
+  protected ModelContext<Apple> Apple= Model.with(Apple.class);
+  protected ModelContext<Vehicle> Vehicle= Model.with(Vehicle.class);
+  protected ModelContext<Classification> Classification= Model.with(Classification.class);
+  protected ModelContext<Mammal> Mammal= Model.with(Mammal.class);
+  protected ModelContext<Address> Address= Model.with(Address.class);
+  protected ModelContext<Room> Room= Model.with(Room.class);
+  protected ModelContext<Doctor> Doctor= Model.with(Doctor.class);
+  protected ModelContext<Patient> Patient= Model.with(Patient.class);
+  protected ModelContext<Prescription> Prescription= Model.with(Prescription.class);
+  protected ModelContext<DoctorsPatients> DoctorsPatients= Model.with(DoctorsPatients.class);
+  protected ModelContext<Comment> Comment= Model.with(Comment.class);
+  protected ModelContext<Article> Article= Model.with(Article.class);
+  protected ModelContext<SubClassification> SubClassification= Model.with(SubClassification.class);
+  protected ModelContext<Student> Student= Model.with(Student.class);
+  protected ModelContext<Plant> Plant= Model.with(Plant.class);
+  protected ModelContext<Programmer> Programmer= Model.with(Programmer.class);
+  protected ModelContext<Project> Project= Model.with(Project.class);
+  protected ModelContext<Assignment> Assignment= Model.with(Assignment.class);
+  protected ModelContext<Watermelon> Watermelon= Model.with(Watermelon.class);
+  protected ModelContext<Member> Member= Model.with(Member.class);
+  protected ModelContext<Item> Item= Model.with(Item.class);
+  protected ModelContext<Image> Image= Model.with(Image.class);
+  protected ModelContext<Sword> Sword= Model.with(Sword.class);
+  protected ModelContext<Cheese> Cheese= Model.with(Cheese.class);
+  protected ModelContext<Cake> Cake= Model.with(Cake.class);
+  protected ModelContext<Library> Library= Model.with(Library.class);
+  protected ModelContext<NoArg> NoArg= Model.with(NoArg.class);
+  protected ModelContext<Page> Page= Model.with(Page.class);
+  protected ModelContext<Computer> Computer= Model.with(Computer.class);
+  protected ModelContext<Motherboard> Motherboard= Model.with(Motherboard.class);
+  protected ModelContext<Book> Book= Model.with(Book.class);
+  protected ModelContext<Reader> Reader= Model.with(Reader.class);
+  protected ModelContext<Ingredient> Ingredient= Model.with(Ingredient.class);
+  protected ModelContext<Node> Node= Model.with(Node.class);
+  protected ModelContext<ContentGroup> ContentGroup= Model.with(ContentGroup.class);
+  protected ModelContext<Keyboard> Keyboard= Model.with(Keyboard.class);
+  protected ModelContext<Recipe> Recipe= Model.with(Recipe.class);
+  protected ModelContext<Post> Post= Model.with(Post.class);
+  protected ModelContext<Course> Course= Model.with(Course.class);
+  protected ModelContext<University> University= Model.with(University.class);
+  protected ModelContext<Animal> Animal= Model.with(Animal.class);
+  protected ModelContext<Account> Account= Model.with(Account.class);
+  
     static boolean schemaGenerated = false;
 
     @Before

@@ -26,55 +26,55 @@ class CallbackSupport {
 
     void fireBeforeSave(Model m){
         beforeSave();
-        List<CallbackListener> listeners = Registry.instance().getListeners(m.getClass());
+        List<CallbackListener> listeners = ListenerRegistry.LISTENER_REGISTRY.getListeners(m.getClass());
         for(CallbackListener listener: listeners)
             listener.beforeSave(m);
     }
 
     void fireAfterSave(Model m){
         afterSave();
-        List<CallbackListener> listeners = Registry.instance().getListeners(m.getClass());
+        List<CallbackListener> listeners = ListenerRegistry.LISTENER_REGISTRY.getListeners(m.getClass());
         for(CallbackListener listener: listeners)
             listener.afterSave(m);
     }
 
     void fireBeforeCreate(Model m){
         beforeCreate();
-        List<CallbackListener> listeners = Registry.instance().getListeners(m.getClass());
+        List<CallbackListener> listeners = ListenerRegistry.LISTENER_REGISTRY.getListeners(m.getClass());
         for(CallbackListener listener: listeners)
             listener.beforeCreate(m);
     }
 
     void fireAfterCreate(Model m){
         afterCreate();
-        List<CallbackListener> listeners = Registry.instance().getListeners(m.getClass());
+        List<CallbackListener> listeners = ListenerRegistry.LISTENER_REGISTRY.getListeners(m.getClass());
         for(CallbackListener listener: listeners)
             listener.afterCreate(m);
     }
 
     void fireBeforeDelete(Model m){
         beforeDelete();
-        List<CallbackListener> listeners = Registry.instance().getListeners(m.getClass());
+        List<CallbackListener> listeners = ListenerRegistry.LISTENER_REGISTRY.getListeners(m.getClass());
         for(CallbackListener listener: listeners)
             listener.beforeDelete(m);
     }
 
     void fireAfterDelete(Model m){
         afterDelete();
-        List<CallbackListener> listeners = Registry.instance().getListeners(m.getClass());
+        List<CallbackListener> listeners = ListenerRegistry.LISTENER_REGISTRY.getListeners(m.getClass());
         for(CallbackListener listener: listeners)
             listener.afterDelete(m);
     }
 
     void fireBeforeValidation(Model m){
         beforeValidation();
-        List<CallbackListener> listeners = Registry.instance().getListeners(m.getClass());
+        List<CallbackListener> listeners = ListenerRegistry.LISTENER_REGISTRY.getListeners(m.getClass());
         for(CallbackListener listener: listeners)
             listener.beforeValidation(m);
     }
     void fireAfterValidation(Model m){
         afterValidation();
-        List<CallbackListener> listeners = Registry.instance().getListeners(m.getClass());
+        List<CallbackListener> listeners = ListenerRegistry.LISTENER_REGISTRY.getListeners(m.getClass());
         for(CallbackListener listener: listeners)
             listener.afterValidation(m);        
     }

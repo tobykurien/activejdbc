@@ -17,8 +17,7 @@ limitations under the License.
 
 package org.javalite.activejdbc.validation;
 
-import org.javalite.activejdbc.Model;
-import org.javalite.activejdbc.Registry;
+import org.javalite.activejdbc.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,7 @@ public class ValidationHelper {
         for (String attribute : attributes) {
             validators.add(new NumericValidator(attribute));
         }
-        Registry.instance().addValidators(modelClass, validators);
+        ValidatorRegistry.instance().addValidators(modelClass, validators);
         return new NumericValidationBuilder(validators);
     }
 
@@ -57,7 +56,7 @@ public class ValidationHelper {
     public static ValidationBuilder addRegexpValidator(String modelClass, String attribute, String pattern) {
         List<Validator> validators = new ArrayList<Validator>();
         validators.add(new RegexpValidator(attribute, pattern));
-        Registry.instance().addValidators(modelClass, validators);
+        ValidatorRegistry.instance().addValidators(modelClass, validators);
         return new ValidationBuilder(validators);
     }
 
@@ -69,7 +68,7 @@ public class ValidationHelper {
     public static ValidationBuilder addValidator(String modelClass, Validator validator) {
         List<Validator> validators = new ArrayList<Validator>();
         validators.add(validator);
-        Registry.instance().addValidators(modelClass, validators);
+        ValidatorRegistry.instance().addValidators(modelClass, validators);
         return new ValidationBuilder(validators);
     }
 
@@ -81,7 +80,7 @@ public class ValidationHelper {
     public static ValidationBuilder addEmailValidator(String modelClass, String attribute) {
         List<Validator> validators = new ArrayList<Validator>();
         validators.add(new EmailValidator(attribute));
-        Registry.instance().addValidators(modelClass, validators);
+        ValidatorRegistry.instance().addValidators(modelClass, validators);
         return new ValidationBuilder(validators);
     }
 
@@ -94,12 +93,12 @@ public class ValidationHelper {
         List<Validator> validators = new ArrayList<Validator>();
 
         validators.add(new RangeValidator(attribute, min, max));
-        Registry.instance().addValidators(modelClass, validators);
+        ValidatorRegistry.instance().addValidators(modelClass, validators);
         return new ValidationBuilder(validators);
     }
 
-    @Deprecated
-    public static ValidationBuilder addPresensevalidators(Class<Model> modelClass, String... attributes) {
+    //@Deprecated
+    public static <T extends Model> ValidationBuilder addPresensevalidators(Class<T> modelClass, String... attributes) {
         return addPresensevalidators(modelClass.getName(), attributes);
     }
 
@@ -109,7 +108,7 @@ public class ValidationHelper {
         for (String attribute : attributes) {
             validators.add(new AttributePresenceValidator(attribute));
         }
-        Registry.instance().addValidators(modelClass, validators);
+        ValidatorRegistry.instance().addValidators(modelClass, validators);
         return new ValidationBuilder(validators);
     }
 
@@ -121,7 +120,7 @@ public class ValidationHelper {
     public static ValidationBuilder addDateConverter(String modelClass, String attributeName, String format) {
         List<Validator> validators = new ArrayList<Validator>();
         validators.add(new DateConverter(attributeName, format));
-        Registry.instance().addValidators(modelClass, validators);
+        ValidatorRegistry.instance().addValidators(modelClass, validators);
         return new ValidationBuilder(validators);
     }
 
@@ -133,7 +132,7 @@ public class ValidationHelper {
     public static ValidationBuilder addTimestampConverter(String modelClass, String attributeName, String format) {
         List<Validator> validators = new ArrayList<Validator>();
         validators.add(new TimestampConverter(attributeName, format));
-        Registry.instance().addValidators(modelClass, validators);
+        ValidatorRegistry.instance().addValidators(modelClass, validators);
         return new ValidationBuilder(validators);
     }
 }

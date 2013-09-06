@@ -33,9 +33,6 @@
     <profiles>
         <profile>
             <id>mysql</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
                 <jdbc.url>jdbc:mysql://localhost/activejdbc</jdbc.url>
@@ -99,6 +96,9 @@
         </profile>
         <profile>
             <id>h2</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <jdbc.driver>org.h2.Driver</jdbc.driver>
                 <jdbc.url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</jdbc.url>
@@ -166,7 +166,7 @@
                 </repository>
             </repositories>
         </profile>
-        <profile>
+        <!-- <profile>
             <id>instrument</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -190,7 +190,7 @@
                 </plugin>
                 </plugins>
             </build>
-        </profile>
+        </profile> -->
     </profiles>
     <build>
         <testResources>

@@ -1,7 +1,7 @@
 package org.javalite.activejdbc;
 
 import org.javalite.activejdbc.test_models.Person;
-import org.junit.Test;
+import org.junit.*;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -10,6 +10,7 @@ import static org.javalite.test.jspec.JSpec.a;
 /**
  * @author Igor Polevoy: 4/4/12 2:40 PM
  */
+@Ignore("Mysql")
 public class RaceConditionTest {
 
     @Test
