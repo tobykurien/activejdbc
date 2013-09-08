@@ -46,6 +46,9 @@ public class ModelContext<T extends Model> {
   public LazyList<T> findAll() {
     return Model.findAll(cls);
   }
+  public LazyList<T> all(){
+    return this.findAll();
+  }
 
   public LazyList<T> find(String subquery, Object... params) {
     return Model.find(cls, subquery, params);

@@ -1759,7 +1759,7 @@ public abstract class Model extends CallbackSupport implements Externalizable {
     } catch (DBException e) {
       throw e;
     } catch (Exception e) {
-      throw new InitException("Model '" + getClassName() + "' must provide a default constructor. Table:", e);
+      throw new InitException("Model '" + cls + "' must provide a default constructor. Table:", e);
     }
   }
 
