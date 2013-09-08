@@ -58,11 +58,10 @@ public class NumericValidator extends ValidatorAdapter {
         //this is to check just numericality
         if (value != null) {
             try {
-                ParsePosition pp = new ParsePosition(0);
-                String input = value.toString();
-                NumberFormat.getInstance().parse(input, pp);
-                if(pp.getIndex() != (input.length()))
-                    throw new RuntimeException("");
+            	if(!(value instanceof Number)){
+	                String input = value.toString();
+	                Double.parseDouble(input);//Or new BigDecimal(input) might be better
+            	}
             } catch (Exception e) {
                 m.addValidator(this, attribute);
             }

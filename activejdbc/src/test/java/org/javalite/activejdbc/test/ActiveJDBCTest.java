@@ -25,6 +25,7 @@ import java.sql.*;
 import java.util.*;
 
 import org.javalite.activejdbc.*;
+import org.javalite.activejdbc.cache.QueryCache;
 import org.javalite.activejdbc.test_models.*;
 import org.javalite.activejdbc.test_models.Reader;
 import org.javalite.test.jspec.JSpecSupport;
@@ -188,6 +189,8 @@ public abstract class ActiveJDBCTest extends JSpecSupport {
     protected void deleteAndPopulateTable(String table) {
         deleteFromTable(table);
         populateTable(table);
+    	QueryCache.instance().purgeTableCache(table);
+
     }
 
     

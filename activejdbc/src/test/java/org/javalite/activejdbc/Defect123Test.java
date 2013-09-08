@@ -16,13 +16,18 @@ limitations under the License.
 
 package org.javalite.activejdbc;
 
+import org.javalite.activejdbc.cache.QueryCache;
 import org.javalite.activejdbc.test.ActiveJDBCTest;
 import org.javalite.activejdbc.test_models.Person;
+import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * @author Igor Polevoy
  */
+//@Ignore("Eclipse: when running all test the cache is colliding. e.g this is colliding with Defect122Test and with some others"
+//		+ "Soirce of problem is that Cahce is classloader global. It should be loval for db conncetion ???")
 public class Defect123Test extends ActiveJDBCTest {
 
     @Test(expected = StaleModelException.class)
@@ -32,5 +37,10 @@ public class Defect123Test extends ActiveJDBCTest {
         Person p = Person.findById(1);
         Person.delete("id = 1");
         p.refresh();
+    }
+    
+    @After
+    public void teardown(){
+    	QueryCache.instance().purgeTableCache("people");
     }
 }

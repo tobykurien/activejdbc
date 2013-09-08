@@ -18,13 +18,16 @@ limitations under the License.
 package org.javalite.activejdbc.cache;
 
 
+import java.util.Arrays;
+
+import org.javalite.activejdbc.Association;
 import org.javalite.activejdbc.LogFilter;
+import org.javalite.activejdbc.MetaModel;
+import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.Registry;
 import org.javalite.common.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Arrays;
 
 /**
  * This is a main cache facade. It could be architected in the future to add more cache implementations besides OSCache.
@@ -115,7 +118,12 @@ public class QueryCache {
      * @param tableName table name whose caches are to be purged.
      */
     public void purgeTableCache(String tableName) {
-        if(enabled  && Registry.instance().getMetaModel(tableName).cached()){
+    	@SuppressWarnings("rawtypes")
+		MetaModel mm =Registry.instance().getMetaModel(tableName);
+    	if(null == mm){
+    		return;
+    	}
+        if(enabled  && mm.cached()){
             cacheManager.flush(new CacheEvent(tableName, getClass().getName()));
         }
     }
