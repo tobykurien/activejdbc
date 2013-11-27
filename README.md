@@ -1,3 +1,7 @@
+This is a fork of the ActiveJDBC project that doesn't require instrumentation (as this is a problem for Eclipse),
+and is also modified by @tobykurien for use in the Sparkler project (https://github.com/tobykurien/Sparkler) so 
+that configuration can be supplied at run-time from any source.
+
 ActiveJDBC is very cool except instrumentation. More precisely my favorit IDE (Eclipse) 
 has inproper support in `process-class` maven goal.
 
