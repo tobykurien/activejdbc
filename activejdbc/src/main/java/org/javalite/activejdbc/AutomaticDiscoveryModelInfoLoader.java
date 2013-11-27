@@ -76,10 +76,14 @@ public class AutomaticDiscoveryModelInfoLoader implements ModelInfoLoader {
         else {
           // We remove the .class at the end of the filename to get the
           // class name...
-          Class<?> clazz = Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6));
-          // Check, if class contains test methods (prevent "No runnable methods" exception):
-          if (superclass.isAssignableFrom(clazz)) {
-            classes.add(clazz);
+          try {
+             Class<?> clazz = Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6));
+             // Check, if class contains test methods (prevent "No runnable methods" exception):
+             if (superclass.isAssignableFrom(clazz)) {
+               classes.add(clazz);
+             }
+          } catch (ClassNotFoundException e) {
+             // ignore classes that can't be loaded
           }
         }
       }
